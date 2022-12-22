@@ -1,0 +1,20 @@
+{
+  "name": "amsattendance",
+  "version": "1.0.0",
+  "description": "Express JS app to automate teacher attendance and staff covereages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JackPadalino/AMSAttendance.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JackPadalino/AMSAttendance/issues"
+  },
+  "homepage": "https://github.com/JackPadalino/AMSAttendance#readme"
+}
