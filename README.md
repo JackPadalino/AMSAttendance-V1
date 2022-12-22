@@ -13,4 +13,9 @@ Express JS app to automate teacher attendance and staff covereages.
 
 # To receive messages on Express App
 - Using Twilio API andd ngrok webhooks
-- 
+
+# Next steps
+- Need to configure Twilio command line to set up phone number URL
+- run 'twilio profiles:list to see all Twilio profiles'
+- https://www.twilio.com/docs/sms/quickstart/node
+- https://www.twilio.com/docs/twilio-cli/general-usage/profiles#use-multiple-profiles
