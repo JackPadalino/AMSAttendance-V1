@@ -10,3 +10,7 @@ Express JS app to automate teacher attendance and staff covereages.
 - Live, deployed app
 - App can receive/send messages
 - DB of teacher schedules
+
+# To receive messages on Express App
+- Using Twilio API andd ngrok webhooks
+- 
