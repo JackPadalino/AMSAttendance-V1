@@ -325,6 +325,56 @@ const seed = async () => {
 
     await Promise.all(msScheduleList.map((schedule) => MSSchedule.create(schedule)));
 
+    //-------------create all days here-------------//
+    const dayList = [
+        {date:'2022-01-01'},
+        {date:'2022-01-02'},
+        {date:'2022-01-03'},
+        {date:'2022-02-01'},
+        {date:'2022-02-02'},
+        {date:'2022-02-03'}
+    ];
+
+    const [
+        January012022,
+        January022022,
+        January032022,
+        February012022,
+        February022022,
+        February032022,
+    ] = await Promise.all(dayList.map((day) => Day.create(day)));
+
+    //-------------create all asbences here-------------//
+    // const absenceList = [
+    //     //Corteza Wiza absences
+    //     {teacherId:CortezWiza.id},
+    //     {teacherId:CortezWiza.id},
+    //     {teacherId:CortezWiza.id},
+    //     //Dixie Huel absences
+    //     {teacherId:DixieHuel.id},
+    //     {teacherId:DixieHuel.id},
+    //     {teacherId:DixieHuel.id},
+    //     //Jamie Ryan absences
+    //     {teacherId:JamieRyan.id},
+    //     {teacherId:JamieRyan.id},
+    //     //Jack Padalino absences
+    //     {teacherId:JackPadalino.id},
+    //     {teacherId:JackPadalino.id},
+    // ];
+
+    // const [
+    //     CortezWizaAbsence1,
+    //     CortezWizaAbsence2,
+    //     CortezWizaAbsence3,
+    //     DixieHuelAbsence1,
+    //     DixieHuelAbsence2,
+    //     DixieHuelAbsence3,
+    //     JamieRyanAbsence1,
+    //     JamieRyanAbsence2,
+    //     JackPadalinoAbsence1,
+    //     JackPadalinoAbsence2,
+    // ] = await Promise.all(absenceList.map((absence) => Absence.create(absence)));
+
     console.log("DB SEED COMPLETE.");
   };
   
