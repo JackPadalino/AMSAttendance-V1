@@ -104,6 +104,7 @@ const seed = async () => {
         MrPadalino
     ] = await Promise.all(teacherList.map((teacher) => Teacher.create(teacher)));
 
+    //-------------create all HS Schedules here-------------//
     const hsScheduleList = [
         {
             firstPeriod: null,
@@ -219,6 +220,111 @@ const seed = async () => {
 
     await Promise.all(hsScheduleList.map((schedule) => HSSchedule.create(schedule)));
     
+    //-------------create all MS Schedules here-------------//
+    const msScheduleList = [
+        {
+            firstPeriod: null,
+            secondPeriod: null,
+            thirdPeriod: null,
+            fourthPeriod: null,
+            fifthPeriod: null,
+            sixthPeriod: null,
+            teacherId:CortezWiza.id
+        },
+        {
+            firstPeriod: null,
+            secondPeriod: null,
+            thirdPeriod: null,
+            fourthPeriod: null,
+            fifthPeriod: null,
+            sixthPeriod: null,
+            teacherId:AlexzanderOConnell.id
+        },
+        {
+            firstPeriod: null,
+            secondPeriod: null,
+            thirdPeriod: null,
+            fourthPeriod: null,
+            fifthPeriod: null,
+            sixthPeriod: null,
+            teacherId:DixieHuel.id
+        },
+        {
+            firstPeriod: null,
+            secondPeriod: null,
+            thirdPeriod: null,
+            fourthPeriod: null,
+            fifthPeriod: null,
+            sixthPeriod: null,
+            teacherId:BiankaRobel.id
+        },
+        {
+            firstPeriod: null,
+            secondPeriod: null,
+            thirdPeriod: null,
+            fourthPeriod: null,
+            fifthPeriod: null,
+            sixthPeriod: null,
+            teacherId:DarenZieme.id
+        },
+        {
+            firstPeriod: null,
+            secondPeriod: null,
+            thirdPeriod: null,
+            fourthPeriod: null,
+            fifthPeriod: null,
+            sixthPeriod: null,
+            teacherId:JamieRyan.id
+        },
+        {
+            firstPeriod: null,
+            secondPeriod: null,
+            thirdPeriod: null,
+            fourthPeriod: null,
+            fifthPeriod: null,
+            sixthPeriod: null,
+            teacherId:RudyMoore.id
+        },
+        {
+            firstPeriod: null,
+            secondPeriod: null,
+            thirdPeriod: null,
+            fourthPeriod: null,
+            fifthPeriod: null,
+            sixthPeriod: null,
+            teacherId:AliciaWest.id
+        },
+        {
+            firstPeriod: null,
+            secondPeriod: null,
+            thirdPeriod: null,
+            fourthPeriod: null,
+            fifthPeriod: null,
+            sixthPeriod: null,
+            teacherId:PasqualeKris.id
+        },
+        {
+            firstPeriod: null,
+            secondPeriod: null,
+            thirdPeriod: null,
+            fourthPeriod: null,
+            fifthPeriod: null,
+            sixthPeriod: null,
+            teacherId:DeborahHodkiewicz.id
+        },
+        {
+            firstPeriod: null,
+            secondPeriod: null,
+            thirdPeriod: null,
+            fourthPeriod: null,
+            fifthPeriod: null,
+            sixthPeriod: null,
+            teacherId:JackPadalino.id
+        }
+    ];
+
+    await Promise.all(msScheduleList.map((schedule) => MSSchedule.create(schedule)));
+
     console.log("DB SEED COMPLETE.");
   };
   
