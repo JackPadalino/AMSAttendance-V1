@@ -29,5 +29,20 @@ const createHSSchedules = () =>{
     };
 };
 
+const createMSSchedules = () =>{
+    for(let i=0;i<11;i++){
+        const schedule = {
+            firstPeriod:null,
+            secondPeriod:null,
+            thirdPeriod:null,
+            fourthPeriod:null,
+            fifthPeriod:null,
+            sixthPeriod:null,
+        };
+        console.log(schedule);
+    };
+};
+
 //createTeachers();
-createHSSchedules();
+//createHSSchedules();
+createMSSchedules();
