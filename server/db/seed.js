@@ -345,35 +345,20 @@ const seed = async () => {
     ] = await Promise.all(dayList.map((day) => Day.create(day)));
 
     //-------------create all asbences here-------------//
-    // const absenceList = [
-    //     //Corteza Wiza absences
-    //     {teacherId:CortezWiza.id},
-    //     {teacherId:CortezWiza.id},
-    //     {teacherId:CortezWiza.id},
-    //     //Dixie Huel absences
-    //     {teacherId:DixieHuel.id},
-    //     {teacherId:DixieHuel.id},
-    //     {teacherId:DixieHuel.id},
-    //     //Jamie Ryan absences
-    //     {teacherId:JamieRyan.id},
-    //     {teacherId:JamieRyan.id},
-    //     //Jack Padalino absences
-    //     {teacherId:JackPadalino.id},
-    //     {teacherId:JackPadalino.id},
-    // ];
+    const absenceList = [
+        // January 01 2022 absences
+        {teacherId:CortezWiza.id,dayId:January012022.id},
+        {teacherId:JackPadalino.id,dayId:January012022.id},
+        // January 02 2022 absences
+        {teacherId:DixieHuel.id,dayId:January022022.id},
+        // January 03 2022 absences
+        {teacherId:JamieRyan.id,dayId:January032022.id},
+        {teacherId:DixieHuel.id,dayId:January032022.id},
+        // February 01 2022 absences
+        {teacherId:JackPadalino.id,dayId:February012022.id},
+    ];
 
-    // const [
-    //     CortezWizaAbsence1,
-    //     CortezWizaAbsence2,
-    //     CortezWizaAbsence3,
-    //     DixieHuelAbsence1,
-    //     DixieHuelAbsence2,
-    //     DixieHuelAbsence3,
-    //     JamieRyanAbsence1,
-    //     JamieRyanAbsence2,
-    //     JackPadalinoAbsence1,
-    //     JackPadalinoAbsence2,
-    // ] = await Promise.all(absenceList.map((absence) => Absence.create(absence)));
+    await Promise.all(absenceList.map((absence) => Absence.create(absence)));
 
     console.log("DB SEED COMPLETE.");
   };
