@@ -348,14 +348,14 @@ const seed = async () => {
     const absenceList = [
         // January 01 2022 absences
         {teacherId:CortezWiza.id,dayId:January012022.id},
-        {teacherId:JackPadalino.id,dayId:January012022.id},
+        {teacherId:AlexzanderOConnell.id,dayId:January012022.id},
         // January 02 2022 absences
         {teacherId:DixieHuel.id,dayId:January022022.id},
         // January 03 2022 absences
-        {teacherId:JamieRyan.id,dayId:January032022.id},
-        {teacherId:DixieHuel.id,dayId:January032022.id},
+        {teacherId:BiankaRobel.id,dayId:January032022.id},
+        {teacherId:DarenZieme.id,dayId:January032022.id},
         // February 01 2022 absences
-        {teacherId:JackPadalino.id,dayId:February012022.id},
+        {teacherId:JamieRyan.id,dayId:February012022.id},
     ];
 
     await Promise.all(absenceList.map((absence) => Absence.create(absence)));
