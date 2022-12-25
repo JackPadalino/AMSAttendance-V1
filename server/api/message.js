@@ -30,20 +30,22 @@ router.post('/receive', async(req, res, next) => {
     try {
         const message = req.body.Body;
         const twiml = new MessagingResponse();
-        if(message==='1'){
+        if(message!=='1595'){
+            twiml.message('Please enter 1595 to request a sick day/day off.');
+        }else{
             const date = new Date();
             const year = date.getFullYear();
             const month = date.getMonth() + 1;
             const day = date.getDate();
             const dateStr = `${year}-${month}-${day}`;
-            let todaysDate={};
+            let todaysDate;
             const foundDate = await Day.findOne({
                 where:{
                     date:dateStr
                 }
             });
             if(foundDate){
-                todaysDate=foundDate;
+                todaysDate = foundDate;
             }else{
                 const newDate = await Day.create({
                     date:dateStr
@@ -55,13 +57,25 @@ router.post('/receive', async(req, res, next) => {
                     phoneNumber:req.body.From
                 }
             });
-            await Absence.create({
-                teacherId:teacher.id,
-                dayId:todaysDate.id
-            });
-            twiml.message('Sick day requested. Please wait for a confirmation message from Admin.');
-        }else{
-            twiml.message('Please enter a 1 to proceed.');
+            if(!teacher){
+                twiml.message('Sorry, you are not a registered staff member.');
+            }else{
+                const absence = await Absence.findOne({
+                    where:{
+                        teacherId:teacher.id,
+                        dayId:todaysDate.id
+                    }
+                });
+                if(absence){
+                    twiml.message('It looks like you have already requested this day off.');
+                }else{
+                    await Absence.create({
+                        teacherId:teacher.id,
+                        dayId:todaysDate.id
+                    });
+                    twiml.message('Your request is confirmed.');
+                };
+            };
         };
         res.writeHead(200, {'Content-Type': 'text/xml'});
         res.end(twiml.toString());
