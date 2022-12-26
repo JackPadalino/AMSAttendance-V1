@@ -27,10 +27,10 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <Navbar />
       <RouterComponent />
-    </div>
+    </>
   );
 };
 

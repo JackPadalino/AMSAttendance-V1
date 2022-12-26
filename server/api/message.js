@@ -66,13 +66,13 @@ router.post('/receive', async(req, res, next) => {
                     }
                 });
                 if(absence){
-                    twiml.message('It looks like you have already requested this day off.');
+                    twiml.message(`It looks like you have already made a request for date ${todaysDate.date}.`);
                 }else{
                     await Absence.create({
                         userId:user.id,
                         dayId:todaysDate.id
                     });
-                    twiml.message('Your request is confirmed.');
+                    twiml.message(`Your request for date ${todaysDate.date} is confirmed. Please be sure to share all sub materials with admin before 8:30AM.`);
                 };
             };
         };

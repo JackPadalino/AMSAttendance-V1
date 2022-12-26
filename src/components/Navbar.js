@@ -15,12 +15,12 @@ const Navbar = () => {
   };
 
   return (
-    <>
+    <div>
         <Link to="/">Home</Link>
         {!user.id && <Link to="/login">Login</Link>}
         {user.id && <Link to="/admin">Admin</Link>}
         {user.id && <button onClick={logout}>Logout</button>}
-    </>
+    </div>
   );
 };
 
