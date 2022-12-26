@@ -1,6 +1,7 @@
 const {
     db,
     User,
+    Class,
     HSSchedule,
     MSSchedule,
     Day,
