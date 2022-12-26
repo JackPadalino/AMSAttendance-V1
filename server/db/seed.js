@@ -8,12 +8,13 @@ const {
     Absence,
     Coverage,
     Message
-} = require('./');
+} = require('.');
 
 const seed = async () => {
     console.log("STARTING DB SEED...");
     await db.sync({ force: true });
 
+    //-------------create all users here-------------//
     const userList = [
         {
             firstName: 'Cortez',
@@ -92,7 +93,6 @@ const seed = async () => {
         }
     ];
 
-    //-------------create all teachers here-------------//
     const [
         CortezWiza,
         AlexzanderOConnell,
@@ -108,226 +108,21 @@ const seed = async () => {
         MrPadalino
     ] = await Promise.all(userList.map((user) => User.create(user)));
 
-    //-------------create all HS Schedules here-------------//
-    const hsScheduleList = [
-        {
-            firstPeriod: null,
-            secondPeriod: 'fugit',
-            thirdPeriod: 'praesentium',
-            fourthPeriod: null,
-            fifthPeriod: 'Lunch',
-            sixthPeriod: 'magnam',
-            seventhPeriod: null,
-            userId:CortezWiza.id
-        },
-        {
-            firstPeriod: 'repudiandae',
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: 'Lunch',
-            sixthPeriod: null,
-            seventhPeriod: 'ex',
-            userId:AlexzanderOConnell.id
-        },
-        {
-            firstPeriod: null,
-            secondPeriod: null,
-            thirdPeriod: 'fugiat',
-            fourthPeriod: 'temporibus',
-            fifthPeriod: 'Lunch',
-            sixthPeriod: null,
-            seventhPeriod: null,
-            userId:DixieHuel.id
-        },
-        {
-            firstPeriod: null,
-            secondPeriod: 'dolore',
-            thirdPeriod: 'alias',
-            fourthPeriod: 'a',
-            fifthPeriod: 'Lunch',
-            sixthPeriod: null,
-            seventhPeriod: 'voluptatum',
-            userId:BiankaRobel.id
-        },
-        {
-            firstPeriod: 'voluptates',
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: 'Lunch',
-            sixthPeriod: 'possimus',
-            seventhPeriod: null,
-            userId:DarenZieme.id
-        },
-        {
-            firstPeriod: null,
-            secondPeriod: 'adipisci',
-            thirdPeriod: 'velit',
-            fourthPeriod: 'autem',
-            fifthPeriod: 'Lunch',
-            sixthPeriod: null,
-            seventhPeriod: null,
-            userId:JamieRyan.id
-        },
-        {
-            firstPeriod: null,
-            secondPeriod: 'accusantium',
-            thirdPeriod: 'itaque',
-            fourthPeriod: 'maxime',
-            fifthPeriod: 'Lunch',
-            sixthPeriod: 'dolore',
-            seventhPeriod: null,
-            userId:RudyMoore.id
-        },
-        {
-            firstPeriod: 'ut',
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: 'Lunch',
-            sixthPeriod: 'sit',
-            seventhPeriod: 'beatae',
-            userId:AliciaWest.id
-        },
-        {
-            firstPeriod: 'iusto',
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: 'Lunch',
-            sixthPeriod: null,
-            seventhPeriod: null,
-            userId:PasqualeKris.id
-        },
-        {
-            firstPeriod: 'iure',
-            secondPeriod: 'ex',
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: 'Lunch',
-            sixthPeriod: null,
-            seventhPeriod: null,
-            userId:DeborahHodkiewicz.id
-        },
-        {
-            firstPeriod: 'recusandae',
-            secondPeriod: 'occaecati',
-            thirdPeriod: null,
-            fourthPeriod: 'eveniet',
-            fifthPeriod: 'Lunch',
-            sixthPeriod: null,
-            seventhPeriod: null,
-            userId:JackPadalino.id
-        }
+    //-------------create all classes here-------------//
+    const classesList = [
+        {name:"Prep period",isFreePeriod:true,period:1},
+        {name:"Prep period",isFreePeriod:true,period:2},
+        {name:"Prep period",isFreePeriod:true,period:3},
+        {name:"Prep period",isFreePeriod:true,period:4},
+        {name:"Prep period",isFreePeriod:true,period:6},
+        {name:"Prep period",isFreePeriod:true,period:7},
+        {name:"Lunch",isFreePeriod:true,period:5}
+        
     ];
 
-    await Promise.all(hsScheduleList.map((schedule) => HSSchedule.create(schedule)));
+    //await Promise.all(classesList.map((class) => Class.create(class)));
     
-    //-------------create all MS Schedules here-------------//
-    const msScheduleList = [
-        {
-            firstPeriod: null,
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: null,
-            sixthPeriod: null,
-            userId:CortezWiza.id
-        },
-        {
-            firstPeriod: null,
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: null,
-            sixthPeriod: null,
-            userId:AlexzanderOConnell.id
-        },
-        {
-            firstPeriod: null,
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: null,
-            sixthPeriod: null,
-            userId:DixieHuel.id
-        },
-        {
-            firstPeriod: null,
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: null,
-            sixthPeriod: null,
-            userId:BiankaRobel.id
-        },
-        {
-            firstPeriod: null,
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: null,
-            sixthPeriod: null,
-            userId:DarenZieme.id
-        },
-        {
-            firstPeriod: null,
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: null,
-            sixthPeriod: null,
-            userId:JamieRyan.id
-        },
-        {
-            firstPeriod: null,
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: null,
-            sixthPeriod: null,
-            userId:RudyMoore.id
-        },
-        {
-            firstPeriod: null,
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: null,
-            sixthPeriod: null,
-            userId:AliciaWest.id
-        },
-        {
-            firstPeriod: null,
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: null,
-            sixthPeriod: null,
-            userId:PasqualeKris.id
-        },
-        {
-            firstPeriod: null,
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: null,
-            sixthPeriod: null,
-            userId:DeborahHodkiewicz.id
-        },
-        {
-            firstPeriod: null,
-            secondPeriod: null,
-            thirdPeriod: null,
-            fourthPeriod: null,
-            fifthPeriod: null,
-            sixthPeriod: null,
-            userId:JackPadalino.id
-        }
-    ];
-
-    await Promise.all(msScheduleList.map((schedule) => MSSchedule.create(schedule)));
+    
 
     //-------------create all days here-------------//
     const dayList = [
