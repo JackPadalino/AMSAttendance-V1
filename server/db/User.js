@@ -1,6 +1,5 @@
 const db = require("./db");
 const Sequelize = require("sequelize");
-const { STRING, UUID, UUIDV4 } = db.Sequelize;
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const JWT = process.env.JWT;
@@ -50,6 +49,17 @@ const User = db.define("user", {
     type: Sequelize.INTEGER,
     defaultValue:0
   },
+  username: {
+    type: Sequelize.STRING,
+    // allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+    unique: true,
+    set(value) {
+      this.setDataValue("username", value.toLowerCase());
+    },
+  },
   password: {
     type: Sequelize.STRING,
     // allowNull: false,
@@ -97,7 +107,7 @@ User.authenticate = async function ({ username, password }) {
     },
   });
   if (user && (await bcrypt.compare(password, user.password))) {
-    return jwt.sign({ id:user.id,username:user.username,role:user.role }, JWT);
+    return jwt.sign({ id:user.id }, JWT);
   }
   const error = new Error("bad credentials");
   error.status = 401;

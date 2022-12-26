@@ -1,6 +1,6 @@
 const {
     db,
-    Teacher,
+    User,
     HSSchedule,
     MSSchedule,
     Day,
@@ -13,7 +13,7 @@ const seed = async () => {
     console.log("STARTING DB SEED...");
     await db.sync({ force: true });
 
-    const teacherList = [
+    const userList = [
         {
             firstName: 'Cortez',
             lastName: 'Wiza',
@@ -84,7 +84,10 @@ const seed = async () => {
             firstName: 'Mr',
             lastName: 'Padalino',
             email: 'jpadalino@amsbronx.org',
-            phoneNumber: '+15858804745'
+            phoneNumber: '+15858804745',
+            username:'jpadalino',
+            password:'1595Bathgate',
+            role:'admin'
         }
     ];
 
@@ -102,7 +105,7 @@ const seed = async () => {
         DeborahHodkiewicz,
         JackPadalino,
         MrPadalino
-    ] = await Promise.all(teacherList.map((teacher) => Teacher.create(teacher)));
+    ] = await Promise.all(userList.map((user) => User.create(user)));
 
     //-------------create all HS Schedules here-------------//
     const hsScheduleList = [
@@ -114,7 +117,7 @@ const seed = async () => {
             fifthPeriod: 'Lunch',
             sixthPeriod: 'magnam',
             seventhPeriod: null,
-            teacherId:CortezWiza.id
+            userId:CortezWiza.id
         },
         {
             firstPeriod: 'repudiandae',
@@ -124,7 +127,7 @@ const seed = async () => {
             fifthPeriod: 'Lunch',
             sixthPeriod: null,
             seventhPeriod: 'ex',
-            teacherId:AlexzanderOConnell.id
+            userId:AlexzanderOConnell.id
         },
         {
             firstPeriod: null,
@@ -134,7 +137,7 @@ const seed = async () => {
             fifthPeriod: 'Lunch',
             sixthPeriod: null,
             seventhPeriod: null,
-            teacherId:DixieHuel.id
+            userId:DixieHuel.id
         },
         {
             firstPeriod: null,
@@ -144,7 +147,7 @@ const seed = async () => {
             fifthPeriod: 'Lunch',
             sixthPeriod: null,
             seventhPeriod: 'voluptatum',
-            teacherId:BiankaRobel.id
+            userId:BiankaRobel.id
         },
         {
             firstPeriod: 'voluptates',
@@ -154,7 +157,7 @@ const seed = async () => {
             fifthPeriod: 'Lunch',
             sixthPeriod: 'possimus',
             seventhPeriod: null,
-            teacherId:DarenZieme.id
+            userId:DarenZieme.id
         },
         {
             firstPeriod: null,
@@ -164,7 +167,7 @@ const seed = async () => {
             fifthPeriod: 'Lunch',
             sixthPeriod: null,
             seventhPeriod: null,
-            teacherId:JamieRyan.id
+            userId:JamieRyan.id
         },
         {
             firstPeriod: null,
@@ -174,7 +177,7 @@ const seed = async () => {
             fifthPeriod: 'Lunch',
             sixthPeriod: 'dolore',
             seventhPeriod: null,
-            teacherId:RudyMoore.id
+            userId:RudyMoore.id
         },
         {
             firstPeriod: 'ut',
@@ -184,7 +187,7 @@ const seed = async () => {
             fifthPeriod: 'Lunch',
             sixthPeriod: 'sit',
             seventhPeriod: 'beatae',
-            teacherId:AliciaWest.id
+            userId:AliciaWest.id
         },
         {
             firstPeriod: 'iusto',
@@ -194,7 +197,7 @@ const seed = async () => {
             fifthPeriod: 'Lunch',
             sixthPeriod: null,
             seventhPeriod: null,
-            teacherId:PasqualeKris.id
+            userId:PasqualeKris.id
         },
         {
             firstPeriod: 'iure',
@@ -204,7 +207,7 @@ const seed = async () => {
             fifthPeriod: 'Lunch',
             sixthPeriod: null,
             seventhPeriod: null,
-            teacherId:DeborahHodkiewicz.id
+            userId:DeborahHodkiewicz.id
         },
         {
             firstPeriod: 'recusandae',
@@ -214,7 +217,7 @@ const seed = async () => {
             fifthPeriod: 'Lunch',
             sixthPeriod: null,
             seventhPeriod: null,
-            teacherId:JackPadalino.id
+            userId:JackPadalino.id
         }
     ];
 
@@ -229,7 +232,7 @@ const seed = async () => {
             fourthPeriod: null,
             fifthPeriod: null,
             sixthPeriod: null,
-            teacherId:CortezWiza.id
+            userId:CortezWiza.id
         },
         {
             firstPeriod: null,
@@ -238,7 +241,7 @@ const seed = async () => {
             fourthPeriod: null,
             fifthPeriod: null,
             sixthPeriod: null,
-            teacherId:AlexzanderOConnell.id
+            userId:AlexzanderOConnell.id
         },
         {
             firstPeriod: null,
@@ -247,7 +250,7 @@ const seed = async () => {
             fourthPeriod: null,
             fifthPeriod: null,
             sixthPeriod: null,
-            teacherId:DixieHuel.id
+            userId:DixieHuel.id
         },
         {
             firstPeriod: null,
@@ -256,7 +259,7 @@ const seed = async () => {
             fourthPeriod: null,
             fifthPeriod: null,
             sixthPeriod: null,
-            teacherId:BiankaRobel.id
+            userId:BiankaRobel.id
         },
         {
             firstPeriod: null,
@@ -265,7 +268,7 @@ const seed = async () => {
             fourthPeriod: null,
             fifthPeriod: null,
             sixthPeriod: null,
-            teacherId:DarenZieme.id
+            userId:DarenZieme.id
         },
         {
             firstPeriod: null,
@@ -274,7 +277,7 @@ const seed = async () => {
             fourthPeriod: null,
             fifthPeriod: null,
             sixthPeriod: null,
-            teacherId:JamieRyan.id
+            userId:JamieRyan.id
         },
         {
             firstPeriod: null,
@@ -283,7 +286,7 @@ const seed = async () => {
             fourthPeriod: null,
             fifthPeriod: null,
             sixthPeriod: null,
-            teacherId:RudyMoore.id
+            userId:RudyMoore.id
         },
         {
             firstPeriod: null,
@@ -292,7 +295,7 @@ const seed = async () => {
             fourthPeriod: null,
             fifthPeriod: null,
             sixthPeriod: null,
-            teacherId:AliciaWest.id
+            userId:AliciaWest.id
         },
         {
             firstPeriod: null,
@@ -301,7 +304,7 @@ const seed = async () => {
             fourthPeriod: null,
             fifthPeriod: null,
             sixthPeriod: null,
-            teacherId:PasqualeKris.id
+            userId:PasqualeKris.id
         },
         {
             firstPeriod: null,
@@ -310,7 +313,7 @@ const seed = async () => {
             fourthPeriod: null,
             fifthPeriod: null,
             sixthPeriod: null,
-            teacherId:DeborahHodkiewicz.id
+            userId:DeborahHodkiewicz.id
         },
         {
             firstPeriod: null,
@@ -319,7 +322,7 @@ const seed = async () => {
             fourthPeriod: null,
             fifthPeriod: null,
             sixthPeriod: null,
-            teacherId:JackPadalino.id
+            userId:JackPadalino.id
         }
     ];
 
@@ -347,15 +350,15 @@ const seed = async () => {
     //-------------create all asbences here-------------//
     const absenceList = [
         // January 01 2022 absences
-        {teacherId:CortezWiza.id,dayId:January012022.id},
-        {teacherId:AlexzanderOConnell.id,dayId:January012022.id},
+        {userId:CortezWiza.id,dayId:January012022.id},
+        {userId:AlexzanderOConnell.id,dayId:January012022.id},
         // January 02 2022 absences
-        {teacherId:DixieHuel.id,dayId:January022022.id},
+        {userId:DixieHuel.id,dayId:January022022.id},
         // January 03 2022 absences
-        {teacherId:BiankaRobel.id,dayId:January032022.id},
-        {teacherId:DarenZieme.id,dayId:January032022.id},
+        {userId:BiankaRobel.id,dayId:January032022.id},
+        {userId:DarenZieme.id,dayId:January032022.id},
         // February 01 2022 absences
-        {teacherId:JamieRyan.id,dayId:February012022.id},
+        {userId:JamieRyan.id,dayId:February012022.id},
     ];
 
     await Promise.all(absenceList.map((absence) => Absence.create(absence)));
