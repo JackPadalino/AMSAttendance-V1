@@ -30,6 +30,7 @@ Day.hasMany(Coverage);
 Absence.belongsTo(Day);
 Day.hasMany(Absence);
 
+// User - Class M:M
 // User - HS schedule 1:1
 // User - MS schedule 1:1
 // User - Absence 1:M

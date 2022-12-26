@@ -8,11 +8,11 @@ const Class = db.define("class", {
   //     defaultValue: UUIDV4
   // },
   name: {
-    type: Sequelize.STRING,
-    validate: {
-        notEmpty: true,
-    },
-    allowNull: false,
+    type: Sequelize.STRING
+  },
+  isFreePeriod:{
+    type:Sequelize.BOOLEAN,
+    defaultValue:false
   },
   period: {
     type: Sequelize.INTEGER,
@@ -21,8 +21,8 @@ const Class = db.define("class", {
         min:1,
         max:7
     },
-    allowNull: false
   }
+  // need to add "startTime" and "endTime" for comparing MS to HS schedules later on
 });
 
 module.exports = Class;
