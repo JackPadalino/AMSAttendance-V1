@@ -5,7 +5,7 @@ const Sequelize = require("sequelize");
 // const jwt = require("jsonwebtoken");
 // const JWT = process.env.JWT;
 
-const Teacher = db.define("teacher", {
+const User = db.define("user", {
   // id: {
   //     type: UUID,
   //     primaryKey: true,
@@ -50,6 +50,14 @@ const Teacher = db.define("teacher", {
     type: Sequelize.INTEGER,
     defaultValue:0
   },
+  password: {
+    type: Sequelize.STRING,
+    // allowNull: false,
+    validate: {
+      notEmpty: true,
+      //len: [10,18],
+    },
+  },
   role:{
     type:Sequelize.ENUM,
     values:['teacher','admin'],
@@ -57,4 +65,4 @@ const Teacher = db.define("teacher", {
   }
 });
 
-module.exports = Teacher;
+module.exports = User;

@@ -1,5 +1,5 @@
 const db = require("./db");
-const Teacher = require("./Teacher");
+const User = require("./User");
 const HSSchedule = require("./HSSchedule");
 const MSSchedule = require("./MSSchedule");
 const Day = require("./Day");
@@ -7,17 +7,17 @@ const Absence = require("./Absence");
 const Coverage = require("./Coverage");
 const Message = require("./Message");
 
-Teacher.hasOne(HSSchedule);
-HSSchedule.belongsTo(Teacher);
+User.hasOne(HSSchedule);
+HSSchedule.belongsTo(User);
 
-Teacher.hasOne(MSSchedule);
-MSSchedule.belongsTo(Teacher);
+User.hasOne(MSSchedule);
+MSSchedule.belongsTo(User);
 
-Absence.belongsTo(Teacher);
-Teacher.hasMany(Absence);
+Absence.belongsTo(User);
+User.hasMany(Absence);
 
-Coverage.belongsTo(Teacher);
-Teacher.hasMany(Coverage);
+Coverage.belongsTo(User);
+User.hasMany(Coverage);
 
 Coverage.belongsTo(Day);
 Day.hasMany(Coverage);
@@ -34,7 +34,7 @@ Day.hasMany(Absence);
 
 module.exports = {
     db,
-    Teacher,
+    User,
     HSSchedule,
     MSSchedule,
     Day,
