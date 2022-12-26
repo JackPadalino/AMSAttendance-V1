@@ -1,27 +1,15 @@
 module.exports = {
-  mode: "development",
-  entry: ["./src/index.js"],
-  output: {
-    path: __dirname + "/public",
-    filename: "bundle.js",
-  },
-  context: __dirname,
-  devtool: "source-map",
-  devServer: {
-    static: {
-      directory: __dirname + "/public",
-    },
-  },
+  devtool: 'source-map',
   module: {
     rules: [
       {
-        test: /jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         options: {
-          presets: ["@babel/preset-env", "@babel/preset-react"],
-        },
-      },
-    ],
-  },
+          presets: ['@babel/preset-react']
+        }
+      }
+    ]
+  }
 };
