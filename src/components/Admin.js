@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { NotFoundPage } from "./";
 
 const Admin = () => {
     const [date,setDate] = useState('');
     const [absences,setAbsences] = useState([]);
+    const [token, setToken] = useState(window.localStorage.getItem("token"));
 
     const handleDateChange =  async (event) => {
         //console.log(typeof(event.target.value));
@@ -14,6 +16,7 @@ const Admin = () => {
         setAbsences(response.data);
     };
 
+    if(!token) return <NotFoundPage/>
     return (
         <div>
             <input type="date" id="date" onChange={handleDateChange}></input>

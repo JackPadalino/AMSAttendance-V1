@@ -39,17 +39,17 @@ const Login = () => {
   };
 
   return (
-    <>
-        <h1>Login</h1>
-        <form onSubmit={attemptLogin} className="loginRegForm">
-            <input placeholder="username" value={credentials.username} name="username" onChange={onChange}/>
-            <input placeholder="password" name="password" value={credentials.password} onChange={onChange}/>
-            <button>Login</button>
-        </form>
-        {/* <div className="registerAccount">
-            <Link to="/register">Need an account?</Link>
-        </div> */}
-    </>
+    <div>
+      <h1>Login</h1>
+      <form onSubmit={attemptLogin} className="loginRegForm">
+          <input placeholder="username" value={credentials.username} name="username" onChange={onChange}/>
+          <input placeholder="password" name="password" value={credentials.password} onChange={onChange}/>
+          <button>Login</button>
+      </form>
+      {/* <div className="registerAccount">
+          <Link to="/register">Need an account?</Link>
+      </div> */}
+    </div>
   );
 };
 
