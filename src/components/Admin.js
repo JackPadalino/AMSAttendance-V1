@@ -8,8 +8,6 @@ const Admin = () => {
     const [token, setToken] = useState(window.localStorage.getItem("token"));
 
     const handleDateChange =  async (event) => {
-        //console.log(typeof(event.target.value));
-        //setDate(event.target.value);
         const date = event.target.value;
         setDate(date);
         const response = await axios.get(`/api/attendance/absences/${date}`);
