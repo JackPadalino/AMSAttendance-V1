@@ -19,6 +19,10 @@ const Admin = () => {
         setUserAbsences(absArr);
     };
 
+    // look at teach class that needs to be covered
+    // find what period that class occurs
+    // loop through all teachers and find out who is free that period
+
     //console.log(userAbsences);
 
     if(!token) return <NotFoundPage/>
@@ -34,7 +38,7 @@ const Admin = () => {
                             <ul>
                                 {user.classes.map((eachClass) => {
                                     return (
-                                        <li key={eachClass.id}>{eachClass.name}</li>
+                                        !eachClass.isFreePeriod && <li key={eachClass.id}>{eachClass.name} - P{eachClass.period}</li>
                                     )
                                 })}
                             </ul>
