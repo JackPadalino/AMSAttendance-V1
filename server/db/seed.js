@@ -363,6 +363,7 @@ const seed = async () => {
     await Promise.all(absenceList.map((absence) => Absence.create(absence)));
 
     console.log("DB SEED COMPLETE.");
-  };
+
+};
   
-  seed();
+seed();
