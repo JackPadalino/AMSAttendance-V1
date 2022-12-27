@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { NotFoundPage } from "./";
+import { NotFoundPage,TeacherCoverages } from "./";
 
 const Admin = () => {
     const [date,setDate] = useState('');
     const [absences,setAbsences] = useState([]);
+    const [teacher,setTeacher] = useState({});
     const [token, setToken] = useState(window.localStorage.getItem("token"));
 
     const handleDateChange =  async (event) => {
@@ -14,6 +15,13 @@ const Admin = () => {
         setAbsences(response.data);
     };
 
+    const handleTeacherChange = (teacher) =>{
+        //console.log(teacher);
+        setTeacher(teacher);
+    };
+
+    console.log(absences);
+
     if(!token) return <NotFoundPage/>
     return (
         <div>
@@ -22,13 +30,12 @@ const Admin = () => {
             <div>
                 {absences.length>0 && absences.map((absence) => {
                     return (
-                        <div key={absence.id}>
-                            <p>{absence.user.firstName} {absence.user.lastName}</p>
-                        </div>
+                        <p key={absence.id} onClick={() => handleTeacherChange(absence.user)}>{absence.user.firstName} {absence.user.lastName}</p>
                     );
                 })}
                 {absences.length===0 && <p>Looks like there is no information about this date.</p>}
             </div>
+            <TeacherCoverages teacher={teacher}/>
         </div>
     );
 };
