@@ -12,7 +12,19 @@ const Admin = () => {
         const date = event.target.value;
         setDate(date);
         const response = await axios.get(`/api/attendance/absences/${date}`);
-        setAbsences(response.data);
+        //setAbsences(response.data);
+        // need to get the teachers and classes from each absence
+
+
+        // absences should be an array of user objects populated by calling the API endpoint
+        // /api/users/;userId
+
+        // use this tip from chatGPT to push a new teacher object (with their classes) onto
+        // the absences array:
+        const [myArray, setMyArray] = useState([]);
+
+        setMyArray([...myArray, newElement]);
+
     };
 
     const handleTeacherChange = (teacher) =>{
@@ -20,7 +32,9 @@ const Admin = () => {
         setTeacher(teacher);
     };
 
-    console.log(absences);
+    for(let absence of absences){
+        console.log(absence.user);
+    };
 
     if(!token) return <NotFoundPage/>
     return (
@@ -30,12 +44,13 @@ const Admin = () => {
             <div>
                 {absences.length>0 && absences.map((absence) => {
                     return (
-                        <p key={absence.id} onClick={() => handleTeacherChange(absence.user)}>{absence.user.firstName} {absence.user.lastName}</p>
+                        // <p key={absence.id} onClick={() => handleTeacherChange(absence.user)}>{absence.user.firstName} {absence.user.lastName}</p>
+                        <p>{absence.user.firstName} {absence.user.lastName}</p>
                     );
                 })}
                 {absences.length===0 && <p>Looks like there is no information about this date.</p>}
             </div>
-            <TeacherCoverages teacher={teacher}/>
+            {/* <TeacherCoverages teacher={teacher}/> */}
         </div>
     );
 };
