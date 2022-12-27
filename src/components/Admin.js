@@ -4,20 +4,22 @@ import { NotFoundPage } from "./";
 
 const Admin = () => {
     const [date,setDate] = useState('');
-    const [teacherAbsences,setTeacherAbsences] = useState([]);
+    const [userAbsences,setUserAbsences] = useState([]);
     const [token, setToken] = useState(window.localStorage.getItem("token"));
 
     const handleDateChange =  async (event) => {
         const date = event.target.value;
         setDate(date);
-        let response = await axios.get(`/api/attendance/absences/${date}`);
+        const absences = await axios.get(`/api/attendance/absences/${date}`);
         const absArr = [];
-        for(let absence of response.data){
-            response = await axios.get(`/api/users/${absence.user.id}`);
-            absArr.push(response.data);
+        for(let absence of absences.data){
+            const user = await axios.get(`/api/users/${absence.user.id}`);
+            absArr.push(user.data);
         };
-        setTeacherAbsences(absArr);
+        setUserAbsences(absArr);
     };
+
+    //console.log(userAbsences);
 
     if(!token) return <NotFoundPage/>
     return (
@@ -25,14 +27,21 @@ const Admin = () => {
             <input type="date" id="date" onChange={handleDateChange}></input>
             <h1>Attendance {date}</h1>
             <div>
-                {teacherAbsences.length>0 && teacherAbsences.map((teacher) => {
+                {userAbsences.length>0 && userAbsences.map((user) => {
                     return (
-                        <div key={teacher.id}>
-                            <p>{teacher.firstName} {teacher.lastName}</p>
+                        <div key={user.id}>
+                            <p>{user.firstName} {user.lastName}</p>
+                            <ul>
+                                {user.classes.map((eachClass) => {
+                                    return (
+                                        <li key={eachClass.id}>{eachClass.name}</li>
+                                    )
+                                })}
+                            </ul>
                         </div>  
                     );
                 })}
-                {teacherAbsences.length===0 && <p>Looks like there is no information about this date.</p>}
+                {userAbsences.length===0 && <p>Looks like there is no information about this date.</p>}
             </div>
         </div>
     );
