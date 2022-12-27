@@ -5,5 +5,6 @@ router.use('/auth', require('./auth'));
 router.use('/message', require('./message'));
 router.use('/attendance', require('./attendance'));
 router.use('/classes', require('./classes'));
+router.use('/users', require('./users'));
 
 module.exports = router;
