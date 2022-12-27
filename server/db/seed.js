@@ -84,10 +84,10 @@ const seed = async () => {
             phoneNumber: '+15858804798'
         },
         {
-            firstName: 'Elena',
-            lastName: 'Powell',
-            email: 'PowPowPow@gmail.com',
-            phoneNumber: '+17298814798'
+            firstName: 'Madelyn',
+            lastName: 'Padalino',
+            email: 'mpadalino@gmail.com',
+            phoneNumber: '+15854025949'
         },
         {
             firstName: 'Reggie',
@@ -112,7 +112,7 @@ const seed = async () => {
         PasqualeKris,
         DeborahHodkiewicz,
         JackPadalino,
-        ElenaPowell,
+        MadelynPadalino,
         ReggieScott
     ] = await Promise.all(userList.map((user) => User.create(user)));
 
@@ -312,14 +312,14 @@ const seed = async () => {
         {userId:JackPadalino.id,classId:Algebra_9_P6.id},
         {userId:JackPadalino.id,classId:APStats_12_P7.id},
 
-        // ElenaPowell
-        {userId:ElenaPowell.id,classId:LivingEnv_10_P1.id},
-        {userId:ElenaPowell.id,classId:Prep_P2.id},
-        {userId:ElenaPowell.id,classId:EarthSci_11_P3.id},
-        {userId:ElenaPowell.id,classId:Prep_P4.id},
-        {userId:ElenaPowell.id,classId:Lunch.id},
-        {userId:ElenaPowell.id,classId:Prep_P6.id},
-        {userId:ElenaPowell.id,classId:EarthSci_11_P7.id},
+        // MadelynPadalino
+        {userId:MadelynPadalino.id,classId:LivingEnv_10_P1.id},
+        {userId:MadelynPadalino.id,classId:Prep_P2.id},
+        {userId:MadelynPadalino.id,classId:EarthSci_11_P3.id},
+        {userId:MadelynPadalino.id,classId:Prep_P4.id},
+        {userId:MadelynPadalino.id,classId:Lunch.id},
+        {userId:MadelynPadalino.id,classId:Prep_P6.id},
+        {userId:MadelynPadalino.id,classId:EarthSci_11_P7.id},
 
         // ReggieScott
 
