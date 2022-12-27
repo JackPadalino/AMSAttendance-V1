@@ -348,11 +348,15 @@ const seed = async () => {
 
     //-------------create all asbences here-------------//
     const absenceList = [
+        // December 16 2022 absences
         {userId:CortezWiza.id,dayId:December162022.id},
         {userId:AlexzanderOConnell.id,dayId:December162022.id},
+        // December 19 2022 absences
         {userId:DixieHuel.id,dayId:December192022.id},
+        // December 20 2022 absences
         {userId:BiankaRobel.id,dayId:December202022.id},
         {userId:DarenZieme.id,dayId:December202022.id},
+        // December 21 2022 absences
         {userId:JamieRyan.id,dayId:December212022.id},
     ];
 
