@@ -1,39 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { NotFoundPage,TeacherCoverages } from "./";
+import { NotFoundPage } from "./";
 
 const Admin = () => {
     const [date,setDate] = useState('');
-    const [absences,setAbsences] = useState([]);
-    const [teacher,setTeacher] = useState({});
+    const [teacherAbsences,setTeacherAbsences] = useState([]);
     const [token, setToken] = useState(window.localStorage.getItem("token"));
 
     const handleDateChange =  async (event) => {
         const date = event.target.value;
         setDate(date);
-        const response = await axios.get(`/api/attendance/absences/${date}`);
-        //setAbsences(response.data);
-        // need to get the teachers and classes from each absence
-
-
-        // absences should be an array of user objects populated by calling the API endpoint
-        // /api/users/;userId
-
-        // use this tip from chatGPT to push a new teacher object (with their classes) onto
-        // the absences array:
-        const [myArray, setMyArray] = useState([]);
-
-        setMyArray([...myArray, newElement]);
-
-    };
-
-    const handleTeacherChange = (teacher) =>{
-        //console.log(teacher);
-        setTeacher(teacher);
-    };
-
-    for(let absence of absences){
-        console.log(absence.user);
+        let response = await axios.get(`/api/attendance/absences/${date}`);
+        const absArr = [];
+        for(let absence of response.data){
+            response = await axios.get(`/api/users/${absence.user.id}`);
+            absArr.push(response.data);
+        };
+        setTeacherAbsences(absArr);
     };
 
     if(!token) return <NotFoundPage/>
@@ -42,15 +25,15 @@ const Admin = () => {
             <input type="date" id="date" onChange={handleDateChange}></input>
             <h1>Attendance {date}</h1>
             <div>
-                {absences.length>0 && absences.map((absence) => {
+                {teacherAbsences.length>0 && teacherAbsences.map((teacher) => {
                     return (
-                        // <p key={absence.id} onClick={() => handleTeacherChange(absence.user)}>{absence.user.firstName} {absence.user.lastName}</p>
-                        <p>{absence.user.firstName} {absence.user.lastName}</p>
+                        <div key={teacher.id}>
+                            <p>{teacher.firstName} {teacher.lastName}</p>
+                        </div>  
                     );
                 })}
-                {absences.length===0 && <p>Looks like there is no information about this date.</p>}
+                {teacherAbsences.length===0 && <p>Looks like there is no information about this date.</p>}
             </div>
-            {/* <TeacherCoverages teacher={teacher}/> */}
         </div>
     );
 };
