@@ -120,7 +120,7 @@ const seed = async () => {
     const classesList = [
         // All 9th grade classes
         {name:"Global  9",isFreePeriod:false,period:1},
-        {name:"Algebra II  9",isFreePeriod:false,period:4},
+        {name:"Algebra II  9",isFreePeriod:false,period:3},
         {name:"Physics  9",isFreePeriod:false,period:6},
         {name:"Algebra II  9",isFreePeriod:false,period:6},
         {name:"Global  9",isFreePeriod:false,period:7},
