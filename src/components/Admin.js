@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from 'axios';
+import React, { useState,useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { NotFoundPage } from "./";
 
 const Admin = () => {
@@ -11,19 +14,21 @@ const Admin = () => {
         const date = event.target.value;
         setDate(date);
         const absences = await axios.get(`/api/attendance/absences/${date}`);
-        const absArr = [];
-        for(let absence of absences.data){
-            const user = await axios.get(`/api/users/${absence.user.id}`);
-            absArr.push(user.data);
-        };
-        setUserAbsences(absArr);
+        // Old code - Using a for loop to make a separate API call for each absence object
+        // const absArr = [];
+        // for(let absence of absences.data){
+        //     const user = await axios.get(`/api/users/${absence.user.id}`);
+        //     absArr.push(user.data);
+        // };
+        // setUserAbsences(absArr);
+
+        // New code - Use Promise.all to make a single API call to fetch all the user details in one go
+        const userPromises = absences.data.map(absence => axios.get(`/api/users/${absence.user.id}`));
+        const userResponses = await Promise.all(userPromises);
+        const userAbsences = userResponses.map(response => response.data);
+        setUserAbsences(userAbsences);
+        
     };
-
-    // look at teach class that needs to be covered
-    // find what period that class occurs
-    // loop through all teachers and find out who is free that period
-
-    //console.log(userAbsences);
 
     if(!token) return <NotFoundPage/>
     return (
@@ -38,7 +43,7 @@ const Admin = () => {
                             <ul>
                                 {user.classes.map((eachClass) => {
                                     return (
-                                        !eachClass.isFreePeriod && <li key={eachClass.id}>{eachClass.name} - P{eachClass.period}</li>
+                                        !eachClass.isFreePeriod && <li key={eachClass.id}><Link to={`/${eachClass.id}`}>{eachClass.name} - P{eachClass.period}</Link></li>
                                     )
                                 })}
                             </ul>

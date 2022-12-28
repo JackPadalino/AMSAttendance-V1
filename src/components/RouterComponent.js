@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 import {
   Home,
   Login,
-  Admin
+  Admin,
+  SingleClass
 } from "./";
 
 const RouterComponent = () => {
@@ -14,6 +15,7 @@ const RouterComponent = () => {
       <Route exact path="/" element={<Home />} />
       <Route exact path="/login" element={<Login />} />
       <Route exact path="/admin" element={<Admin />} />
+      <Route exact path="/:classId" element={<SingleClass />} />
     </Routes>
   );
 };
