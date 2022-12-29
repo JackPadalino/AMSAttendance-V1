@@ -1,4 +1,4 @@
-# AMSAttendance
+# AMSAttendance-V1
 Express JS app to automate teacher attendance and staff covereages.
 
 - Staff texts number to request sick days

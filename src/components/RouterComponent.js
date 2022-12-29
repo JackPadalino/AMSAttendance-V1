@@ -6,7 +6,7 @@ import {
   Login,
   Admin,
   SingleClass
-} from "./";
+} from ".";
 
 const RouterComponent = () => {
 
