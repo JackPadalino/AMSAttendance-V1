@@ -34,10 +34,16 @@ const SingleClass = () => {
         fetchData();
     }, []);
 
+    /**
+     * Checking the box adds a teacher to an array of potential coverages
+     * Un-checking a box removes a teacher from the array of potential coverages
+     * After hitting submit, a new coverage is created in the db for each teacher checked off 
+    */
+
     if(!Object.keys(thisClass).length) return <NotFoundPage/>;
     return (
         <div>
-            <h1>{thisClass.name} - P{thisClass.period}</h1>
+            <h1>{thisClass.name} P{thisClass.period} {date}</h1>
             <ul>
             {availableTeachers.map((teacher) => {
                 return (
