@@ -1,5 +1,6 @@
 # AMSAttendance-V1
-~~*Ignores letter days and MS/HS schedules*~~
+*Excludes letter days and MS/HS schedules*
+
 Express JS app to automate teacher attendance and staff covereages.
 
 - Staff texts number to request sick days
