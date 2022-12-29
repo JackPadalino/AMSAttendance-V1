@@ -15,7 +15,7 @@ const RouterComponent = () => {
       <Route exact path="/" element={<Home />} />
       <Route exact path="/login" element={<Login />} />
       <Route exact path="/admin" element={<Admin />} />
-      <Route exact path="/:classId" element={<SingleClass />} />
+      <Route exact path="/coverages/:dateStr/:classId" element={<SingleClass />} />
     </Routes>
   );
 };
