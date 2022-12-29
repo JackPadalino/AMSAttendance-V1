@@ -6,15 +6,15 @@ import { Link } from 'react-router-dom';
 import { NotFoundPage } from "./";
 
 const SingleClass = () => {
-    const { dateStr,classId } = useParams();
-    //const { date,allAbsences } = useSelector((state) => state.admin);
+    const { classId } = useParams();
+    const { date,allAbsences } = useSelector((state) => state.admin);
     const [day,setDay] = useState({});
     const [coverages,setCoverages] = useState([]);
     const [thisClass,setThisClass] = useState({});
     const [availableTeachers,setAvailableTeachers] = useState([]);
 
     const fetchData = async()=>{
-        const day = await axios.get(`/api/day/${dateStr}`);
+        const day = await axios.get(`/api/day/${date}`);
         setDay(day.data);
         const classInfo = await axios.get(`/api/classes/${classId}`);
         setThisClass(classInfo.data);
