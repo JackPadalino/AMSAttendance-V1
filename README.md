@@ -15,6 +15,9 @@ Express JS app to automate teacher attendance and staff covereages.
 - Using Twilio API and ngrok webhooks
 
 # Next steps
+### Scheduling
+- Create new version of app with rotating letter days
+- Create third version of app with rotating letter days AND MS/HS schedules
 ### Admin functions
 - Add new teacher and teacher schedule and update front end
 - Create new class
