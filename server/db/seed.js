@@ -84,10 +84,10 @@ const seed = async () => {
             phoneNumber: '+15858804798'
         },
         {
-            firstName: 'Elena',
-            lastName: 'Powell',
-            email: 'PowPowPow@gmail.com',
-            phoneNumber: '+17298814798'
+            firstName: 'Madelyn',
+            lastName: 'Padalino',
+            email: 'mpadalino@gmail.com',
+            phoneNumber: '+15854025949'
         },
         {
             firstName: 'Reggie',
@@ -112,7 +112,7 @@ const seed = async () => {
         PasqualeKris,
         DeborahHodkiewicz,
         JackPadalino,
-        ElenaPowell,
+        MadelynPadalino,
         ReggieScott
     ] = await Promise.all(userList.map((user) => User.create(user)));
 
@@ -120,7 +120,7 @@ const seed = async () => {
     const classesList = [
         // All 9th grade classes
         {name:"Global  9",isFreePeriod:false,period:1},
-        {name:"Algebra II  9",isFreePeriod:false,period:4},
+        {name:"Algebra II  9",isFreePeriod:false,period:3},
         {name:"Physics  9",isFreePeriod:false,period:6},
         {name:"Algebra II  9",isFreePeriod:false,period:6},
         {name:"Global  9",isFreePeriod:false,period:7},
@@ -312,14 +312,14 @@ const seed = async () => {
         {userId:JackPadalino.id,classId:Algebra_9_P6.id},
         {userId:JackPadalino.id,classId:APStats_12_P7.id},
 
-        // ElenaPowell
-        {userId:ElenaPowell.id,classId:LivingEnv_10_P1.id},
-        {userId:ElenaPowell.id,classId:Prep_P2.id},
-        {userId:ElenaPowell.id,classId:EarthSci_11_P3.id},
-        {userId:ElenaPowell.id,classId:Prep_P4.id},
-        {userId:ElenaPowell.id,classId:Lunch.id},
-        {userId:ElenaPowell.id,classId:Prep_P6.id},
-        {userId:ElenaPowell.id,classId:EarthSci_11_P7.id},
+        // MadelynPadalino
+        {userId:MadelynPadalino.id,classId:LivingEnv_10_P1.id},
+        {userId:MadelynPadalino.id,classId:Prep_P2.id},
+        {userId:MadelynPadalino.id,classId:EarthSci_11_P3.id},
+        {userId:MadelynPadalino.id,classId:Prep_P4.id},
+        {userId:MadelynPadalino.id,classId:Lunch.id},
+        {userId:MadelynPadalino.id,classId:Prep_P6.id},
+        {userId:MadelynPadalino.id,classId:EarthSci_11_P7.id},
 
         // ReggieScott
 
@@ -329,35 +329,35 @@ const seed = async () => {
 
     //-------------create all days here-------------//
     const dayList = [
-        {date:'2022-01-01'},
-        {date:'2022-01-02'},
-        {date:'2022-01-03'},
-        {date:'2022-02-01'},
-        {date:'2022-02-02'},
-        {date:'2022-02-03'}
+        {date:'2022-12-16'},
+        {date:'2022-12-19'},
+        {date:'2022-12-20'},
+        {date:'2022-12-21'},
+        {date:'2022-12-22'},
+        {date:'2022-12-23'}
     ];
 
     const [
-        January012022,
-        January022022,
-        January032022,
-        February012022,
-        February022022,
-        February032022,
+        December162022,
+        December192022,
+        December202022,
+        December212022,
+        December222022,
+        December232022,
     ] = await Promise.all(dayList.map((day) => Day.create(day)));
 
     //-------------create all asbences here-------------//
     const absenceList = [
-        // January 01 2022 absences
-        {userId:CortezWiza.id,dayId:January012022.id},
-        {userId:AlexzanderOConnell.id,dayId:January012022.id},
-        // January 02 2022 absences
-        {userId:DixieHuel.id,dayId:January022022.id},
-        // January 03 2022 absences
-        {userId:BiankaRobel.id,dayId:January032022.id},
-        {userId:DarenZieme.id,dayId:January032022.id},
-        // February 01 2022 absences
-        {userId:JamieRyan.id,dayId:February012022.id},
+        // December 16 2022 absences
+        {userId:CortezWiza.id,dayId:December162022.id},
+        {userId:AlexzanderOConnell.id,dayId:December162022.id},
+        // December 19 2022 absences
+        {userId:DixieHuel.id,dayId:December192022.id},
+        // December 20 2022 absences
+        {userId:BiankaRobel.id,dayId:December202022.id},
+        {userId:DarenZieme.id,dayId:December202022.id},
+        // December 21 2022 absences
+        {userId:JamieRyan.id,dayId:December212022.id},
     ];
 
     await Promise.all(absenceList.map((absence) => Absence.create(absence)));

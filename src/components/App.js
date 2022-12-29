@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { Navbar, RouterComponent } from "./";
 import { setUser } from "../store/userSlice";
+import { setAllClasses } from "../store/classSlice";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -22,8 +23,14 @@ const App = () => {
     }
   };
 
+  const fetchClasses = async()=>{
+    const response = await axios.get('/api/classes');
+    dispatch(setAllClasses(response.data));
+  };
+
   useEffect(() => {
     checkForUser();
+    fetchClasses();
   }, []);
 
   return (

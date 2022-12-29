@@ -3,7 +3,7 @@ import React from 'react';
 const NotFoundPage = () => {
     return (
         <div>
-           <p>Looks like you aren't supposed to be here!</p> 
+           <p>Oops! There's nothing here...yet!</p> 
         </div>
     );
 };

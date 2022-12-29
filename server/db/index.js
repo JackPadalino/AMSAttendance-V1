@@ -27,6 +27,9 @@ User.hasMany(Coverage);
 Coverage.belongsTo(Day);
 Day.hasMany(Coverage);
 
+Coverage.belongsTo(Class);
+Class.hasMany(Coverage);
+
 Absence.belongsTo(Day);
 Day.hasMany(Absence);
 
